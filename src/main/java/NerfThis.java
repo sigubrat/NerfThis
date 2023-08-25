@@ -1,4 +1,8 @@
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import javafx.scene.image.Image;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
@@ -13,7 +17,7 @@ import nu.pattern.OpenCV;
 public class NerfThis {
 	public static void main(String[] args) {
 		System.out.println("Test");
-		OpenCV.loadShared();
+		OpenCV.loadLocally();
 		
 		String sourceImagePath = "src/main/resources/face.jpeg";
 		String targetImagePath = "src/main/resources/result.jpeg";
@@ -49,5 +53,12 @@ public class NerfThis {
 	public static void saveImage(Mat imageMatrix, String targetPath) {
     	Imgcodecs imgcodecs = new Imgcodecs();
     	imgcodecs.imwrite(targetPath, imageMatrix);
+	}
+
+	public Image matToImg(Mat mat) {
+		MatOfByte bytes = new MatOfByte();
+		Imgcodecs.imencode("img", mat, bytes);
+		InputStream InputStream = new ByteArrayInputStream(bytes.toArray());
+		return new Image(InputStream);
 	}
 }
