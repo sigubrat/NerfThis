@@ -16,12 +16,18 @@ import nu.pattern.OpenCV;
 
 public class NerfThis {
 	public static void main(String[] args) {
-		System.out.println("Test");
+		detectFaceFromWebcam();
+	}
+
+	public static void detectFaceFromWebcam() {
+	}
+
+	public static void detectFaceImage() {
 		OpenCV.loadLocally();
-		
+
 		String sourceImagePath = "src/main/resources/face.jpeg";
 		String targetImagePath = "src/main/resources/result.jpeg";
-		
+
 
 		Mat loadedImage = loadImage(sourceImagePath);
 		int minFaceSize = Math.round(loadedImage.rows() * 0.1f); 
@@ -29,20 +35,19 @@ public class NerfThis {
 		CascadeClassifier cascadeClassifier = new CascadeClassifier();
 		cascadeClassifier.load("./src/main/resources/haarcascades/haarcascade_frontalface_alt.xml");
 		cascadeClassifier.detectMultiScale(loadedImage, 
-  			facesDetected, 
-  			1.1, 
-  			3, 
-		  Objdetect.CASCADE_SCALE_IMAGE, 
-		  new Size(minFaceSize, minFaceSize), 
-		  new Size() 
-		);
-		
+				facesDetected, 
+				1.1, 
+				3, 
+				Objdetect.CASCADE_SCALE_IMAGE, 
+				new Size(minFaceSize, minFaceSize), 
+				new Size() 
+				);
+
 		Rect[] facesArray = facesDetected.toArray(); 
 		for(Rect face : facesArray) { 
 			Imgproc.rectangle(loadedImage, face.tl(), face.br(), new Scalar(0, 0, 255), 3); 
 		} 
 		saveImage(loadedImage, targetImagePath);
-
 	}
 
 	public static Mat loadImage(String imagePath) {
