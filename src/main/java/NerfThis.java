@@ -20,6 +20,7 @@ public class NerfThis {
 	}
 
 	public static void detectFaceFromWebcam() {
+		System.out.println("Test");
 	}
 
 	public static void detectFaceImage() {
