@@ -1,0 +1,2 @@
+# NerfThis
+Java hobby project
