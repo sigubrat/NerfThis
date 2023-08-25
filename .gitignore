@@ -1,0 +1,18 @@
+# Maven build output
+target/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# NetBeans files
+nbproject/
+build/
+dist/
