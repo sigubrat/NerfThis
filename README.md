@@ -1,2 +1,2 @@
 # NerfThis
-Java hobby project
+Java hobby project for a facial-detection powered Nerf turret WIP 🚧
